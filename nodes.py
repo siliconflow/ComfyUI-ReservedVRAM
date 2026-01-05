@@ -9,12 +9,9 @@ import torch
 if torch.cuda.is_available():
     try:
         import pynvml
-        try: 
-            pynvml.nvmlInit()
-            pynvml_installed = True
-        except: 
-            pynvml_installed = False
-    except Exception as e:
+        pynvml_installed = True
+        pynvml.nvmlInit()
+    except BaseException as e:
         pynvml_installed = False
         print(f"[ReservedVRAM]警告：发生错误: {e}")
 
